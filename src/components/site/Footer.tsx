@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin, Clock, Facebook, Heart, Globe } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Globe } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -11,8 +12,8 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-white/15 grid place-items-center backdrop-blur">
-                <Heart className="w-5 h-5" fill="white" />
+              <div className="w-12 h-12 rounded-xl bg-white/95 grid place-items-center p-1.5 shadow-glow">
+                <img src={logo} alt="Harmony Residential Care logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <div className="font-display font-bold">Harmony</div>
