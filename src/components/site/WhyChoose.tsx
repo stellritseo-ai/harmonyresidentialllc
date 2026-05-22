@@ -13,12 +13,11 @@ const points = [
 
 export function WhyChoose() {
   return (
-    <section id="why" className="relative py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-brand-gradient" />
-      <div className="absolute inset-0 -z-10 opacity-20 [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
-      <div className="absolute -top-32 -right-20 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl -z-10 animate-blob" />
+    <section id="why" className="relative py-20 md:py-28 overflow-hidden bg-brand-gradient">
+      <div className="absolute inset-0 opacity-20 pointer-events-none [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute -top-32 -right-20 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl pointer-events-none animate-blob" />
 
-      <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <Reveal>
           <div className="relative">
             <div className="rounded-[2rem] overflow-hidden shadow-glow">
