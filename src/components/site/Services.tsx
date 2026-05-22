@@ -1,4 +1,5 @@
-import { Stethoscope, Activity, MessageSquare, HandHelping, HeartHandshake, ArrowRight } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Stethoscope, Activity, MessageSquare, HandHelping, HeartHandshake, ArrowRight, Search, LayoutGrid } from "lucide-react";
 import { Reveal } from "./Reveal";
 import svcNursing from "@/assets/svc-nursing.jpg";
 import svcPhysical from "@/assets/svc-physical.jpg";
@@ -11,35 +12,65 @@ const services = [
     icon: Stethoscope,
     image: svcNursing,
     title: "Nursing Services",
+    category: "Nursing",
     desc: "Skilled in-home nursing — wound care, medication management, and post-hospital recovery by licensed RNs.",
   },
   {
     icon: Activity,
     image: svcPhysical,
     title: "Physical Therapy",
+    category: "Physical Therapy",
     desc: "Personalized therapy plans to restore mobility, reduce pain, and rebuild strength after surgery or injury.",
   },
   {
     icon: MessageSquare,
     image: svcSpeech,
     title: "Speech Therapy",
+    category: "Speech Therapy",
     desc: "Regain communication and swallowing function after stroke, brain injury, or neurological conditions.",
   },
   {
     icon: HandHelping,
     image: svcOccupational,
     title: "Occupational Therapy",
+    category: "Occupational Therapy",
     desc: "Relearn daily living skills — dressing, cooking, bathing — to maximize independence and safety at home.",
   },
   {
     icon: HeartHandshake,
     image: svcSocial,
     title: "Medical Social Services",
+    category: "Medical Social Services",
     desc: "Emotional counseling, resource coordination, and family support for navigating complex health journeys.",
   },
 ];
 
+const categories = [
+  "All",
+  "Nursing",
+  "Physical Therapy",
+  "Speech Therapy",
+  "Occupational Therapy",
+  "Medical Social Services",
+] as const;
+
 export function Services() {
+  const [active, setActive] = useState<(typeof categories)[number]>("All");
+  const [query, setQuery] = useState("");
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return services.filter((s) => {
+      const matchCat = active === "All" || s.category === active;
+      const matchQ =
+        !q ||
+        s.title.toLowerCase().includes(q) ||
+        s.desc.toLowerCase().includes(q) ||
+        s.category.toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+  }, [active, query]);
+
   return (
     <section id="services" className="relative py-20 md:py-28 overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-blue-50/40 to-white" />
@@ -60,13 +91,64 @@ export function Services() {
           </div>
         </Reveal>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-          {services.map((s, i) => (
+        <Reveal>
+          <div className="mt-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div className="flex flex-wrap gap-2">
+              {categories.map((c) => {
+                const isActive = c === active;
+                return (
+                  <button
+                    key={c}
+                    onClick={() => setActive(c)}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all border ${
+                      isActive
+                        ? "bg-brand-gradient text-white border-transparent shadow-glow"
+                        : "glass text-foreground/75 border-white/40 hover:text-primary hover:border-primary/30"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    {c === "All" && <LayoutGrid className="w-3.5 h-3.5" />}
+                    {c}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="relative lg:w-72">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search services…"
+                aria-label="Search services"
+                className="w-full rounded-full glass border border-white/40 pl-10 pr-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/80 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/20 transition"
+              />
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {filtered.map((s, i) => (
             <Reveal key={s.title} delay={i * 80}>
               <ServiceCard {...s} />
             </Reveal>
           ))}
         </div>
+
+        {filtered.length === 0 && (
+          <div className="mt-10 text-center text-muted-foreground">
+            <p className="text-base">No services match your search.</p>
+            <button
+              onClick={() => {
+                setActive("All");
+                setQuery("");
+              }}
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
