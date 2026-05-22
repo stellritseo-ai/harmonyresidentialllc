@@ -1,10 +1,9 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@source "../src";
+@custom-variant dark (&:is(.dark *));
 
 /*
  * Design system definition.
@@ -173,16 +172,16 @@
     color: transparent;
   }
   .glass {
-    background: color-mix(in oklab, white 75%, transparent);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid color-mix(in oklab, white 60%, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
   .glass-dark {
-    background: color-mix(in oklab, #0e57ef 18%, transparent);
+    background: rgba(14, 87, 239, 0.18);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid color-mix(in oklab, white 25%, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
   .shadow-glow {
     box-shadow: 0 20px 60px -20px rgba(14, 87, 239, 0.45), 0 8px 24px -12px rgba(28, 23, 222, 0.25);
