@@ -1,15 +1,16 @@
+// @ts-nocheck
 import server from "../dist/server/server.js";
 
 export const config = {
   runtime: "nodejs",
 };
 
-export default async function handler(request: Request) {
+export default async function handler(request) {
   try {
     // Forward the standard request to our TanStack Start server handler
     return await server.fetch(request, {}, {});
   } catch (error) {
-    console.error("Vercel Edge Function SSR Error:", error);
+    console.error("Vercel Function SSR Error:", error);
     return new Response(
       `<!DOCTYPE html>
       <html>
