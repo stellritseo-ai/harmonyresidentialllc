@@ -3,12 +3,11 @@ import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
-    <footer className="relative text-white overflow-hidden">
-      <div className="absolute inset-0 bg-brand-gradient -z-10" />
-      <div className="absolute inset-0 -z-10 opacity-20 [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
-      <div className="absolute -top-32 left-1/3 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl -z-10" />
+    <footer className="relative text-white overflow-hidden bg-brand-gradient">
+      <div className="absolute inset-0 opacity-20 pointer-events-none [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute -top-32 left-1/3 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl px-4 pt-16 pb-8">
+      <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2.5">
