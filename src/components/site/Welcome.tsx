@@ -6,14 +6,14 @@ import { Award, HeartPulse, Users } from "lucide-react";
 
 export function Welcome() {
   return (
-    <section id="about" className="relative py-20 md:py-28">
+    <section id="about" className="relative py-[50px]">
       <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <Reveal className="relative">
           <div className="relative grid grid-cols-2 gap-4">
-            <div className="rounded-3xl overflow-hidden shadow-soft aspect-[3/4] mt-10">
+            <div className="rounded-3xl overflow-hidden shadow-soft aspect-[3/4] mt-10 animate-float">
               <img src={welcomeImg} alt="Therapist helping a senior" loading="lazy" className="w-full h-full object-cover" />
             </div>
-            <div className="rounded-3xl overflow-hidden shadow-soft aspect-[3/4]">
+            <div className="rounded-3xl overflow-hidden shadow-soft aspect-[3/4] animate-float-slow">
               <img src={whyImg} alt="Nurse comforting senior patients" loading="lazy" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 glass rounded-2xl px-6 py-4 flex items-center gap-4 shadow-glow">

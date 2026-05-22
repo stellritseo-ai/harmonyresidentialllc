@@ -8,15 +8,11 @@ export function Footer() {
       <div className="absolute -top-32 left-1/3 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="w-12 h-12 rounded-xl bg-white/95 grid place-items-center p-1.5 shadow-glow">
-                <img src={logo} alt="Harmony Residential Care logo" className="w-full h-full object-contain" />
-              </div>
-              <div>
-                <div className="font-display font-bold">Harmony</div>
-                <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">Residential Care</div>
+              <div className="h-20 px-6 rounded-xl bg-white/95 grid place-items-center shadow-glow">
+                <img src={logo} alt="Harmony Residential Care logo" className="h-14 w-auto object-contain" />
               </div>
             </div>
             <p className="mt-4 text-sm text-white/80 leading-relaxed">
@@ -35,8 +31,17 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-sm text-white/80">
-              {[{l:"Home",h:"#home"},{l:"Services",h:"#services"},{l:"Why Choose Us",h:"#why"},{l:"Contact",h:"#contact"},{l:"Privacy Policy",h:"#"}].map((x) => (
+              {[{ l: "Home", h: "#home" }, { l: "Services", h: "#services" }, { l: "Why Choose Us", h: "#why" }, { l: "Contact", h: "#contact" }, { l: "Privacy Policy", h: "#" }].map((x) => (
                 <li key={x.l}><a href={x.h} className="hover:text-white transition story-link">{x.l}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold mb-4">Services</h4>
+            <ul className="space-y-2.5 text-sm text-white/80">
+              {["Nursing Services", "Physical Therapy", "Speech Therapy", "Occupational Therapy", "Medical Social Services"].map((s) => (
+                <li key={s}><a href="#services" className="hover:text-white transition story-link">{s}</a></li>
               ))}
             </ul>
           </div>
@@ -53,7 +58,7 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold mb-4">Hours</h4>
             <ul className="space-y-3 text-sm text-white/85">
-              <li className="flex items-start gap-2"><Clock className="w-4 h-4 mt-0.5" /> <span>Monday – Friday<br/>8:00 AM – 6:00 PM</span></li>
+              <li className="flex items-start gap-2"><Clock className="w-4 h-4 mt-0.5" /> <span>Monday – Friday<br />8:00 AM – 6:00 PM</span></li>
               <li className="rounded-xl bg-white/10 backdrop-blur p-3 text-xs">
                 <div className="font-semibold text-white">24/7 On-Call Nurse</div>
                 <div className="text-white/75 mt-0.5">Available for urgent needs anytime.</div>
@@ -64,7 +69,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/75">
           <div>© 2026 Harmony Residential Care LLC. All rights reserved.</div>
-          <div>Licensed Home Health Provider — Texas</div>
+          <div>Design By <a href="https://stellrit.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition underline underline-offset-4">StellR IT LLC</a></div>
         </div>
       </div>
     </footer>

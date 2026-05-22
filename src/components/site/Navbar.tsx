@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Menu, X, ChevronDown, Calendar } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -7,7 +7,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Why Us", href: "#why" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
+  // { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -32,22 +32,20 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-2" : "py-4"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "py-2" : "py-4"
+        }`}
     >
       <div className="mx-auto max-w-7xl px-4">
         <div
-          className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-500 ${
-            scrolled ? "glass shadow-soft" : "bg-transparent"
-          }`}
+          className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-500 ${scrolled ? "glass shadow-soft" : "bg-transparent"
+            }`}
         >
           <a href="#home" className="flex items-center gap-2.5 group">
-            <img src={logo} alt="Harmony Residential Care logo" className="h-10 md:h-11 w-auto object-contain" />
-            <div className="leading-tight">
+            <img src={logo} alt="Harmony Residential Care logo" className="h-[75px] md:h-[75px] w-auto object-contain" />
+            {/* <div className="leading-tight">
               <div className="font-display font-bold text-[15px] md:text-base text-foreground">Harmony</div>
               <div className="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Residential Care</div>
-            </div>
+            </div> */}
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -84,6 +82,12 @@ export function Navbar() {
             >
               <Phone className="w-4 h-4" /> 830-743-7043
             </a>
+            <a
+              href="#contact"
+              className="hidden md:inline-flex items-center gap-2 rounded-full bg-blue-50 border border-primary/20 text-primary px-4 md:px-5 py-2.5 text-sm font-semibold hover:bg-primary hover:text-white transition shadow-soft"
+            >
+              <Calendar className="w-4 h-4" /> Book an Appointment
+            </a>
             <button
               aria-label="Toggle menu"
               className="lg:hidden grid place-items-center w-10 h-10 rounded-xl glass"
@@ -111,6 +115,13 @@ export function Navbar() {
               className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-brand-gradient text-white px-4 py-3 font-semibold"
             >
               <Phone className="w-4 h-4" /> Call 830-743-7043
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-blue-50 border border-primary/20 text-primary px-4 py-3 font-semibold"
+            >
+              <Calendar className="w-4 h-4" /> Book an Appointment
             </a>
           </div>
         )}

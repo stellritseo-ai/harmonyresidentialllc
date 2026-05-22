@@ -5,7 +5,7 @@ import { Reveal } from "./Reveal";
 export function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="relative py-20 md:py-28 overflow-hidden">
+    <section id="contact" className="relative py-[50px] overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50/40 to-white" />
       <div className="absolute top-10 right-0 w-96 h-96 rounded-full bg-blue-200/30 blur-3xl -z-10" />
 
@@ -14,7 +14,7 @@ export function Contact() {
           <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-xs font-semibold text-primary">
             Get in Touch
           </div>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
+          <h2 className="mt-4 text-[32px] md:text-[39px] font-bold leading-tight md:leading-[49px]">
             Let's build a <span className="text-brand-gradient">care plan</span> together
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">

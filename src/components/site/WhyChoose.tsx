@@ -13,12 +13,15 @@ const points = [
 
 export function WhyChoose() {
   return (
-    <section id="why" className="relative py-20 md:py-28 overflow-hidden bg-brand-gradient">
-      <div className="absolute inset-0 opacity-20 pointer-events-none [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
-      <div className="absolute -top-32 -right-20 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl pointer-events-none animate-blob" />
+    <section id="why" className="relative py-[50px] bg-brand-gradient">
+      {/* Clip background blobs while allowing sticky columns */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute -top-32 -right-20 w-[480px] h-[480px] rounded-full bg-white/10 blur-3xl animate-blob" />
+      </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <Reveal>
+      <div className="relative mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <Reveal className="lg:sticky lg:top-[120px] self-start w-full">
           <div className="relative">
             <div className="rounded-[2rem] overflow-hidden shadow-glow">
               <img src={whyImg} alt="Nurse assisting a senior at home" loading="lazy" className="w-full h-[460px] object-cover" />
@@ -38,7 +41,7 @@ export function WhyChoose() {
           <div className="inline-flex items-center gap-2 rounded-full bg-white/15 text-white px-4 py-1.5 text-xs font-semibold backdrop-blur">
             Why Choose Us
           </div>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight text-white">
+          <h2 className="mt-4 text-[32px] md:text-[40px] font-bold leading-tight md:leading-[50px] text-white">
             Care your family can trust — at every step of healing.
           </h2>
           <p className="mt-5 text-white/85 text-lg">

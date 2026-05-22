@@ -6,6 +6,7 @@ import { Services } from "@/components/site/Services";
 import { WhyChoose } from "@/components/site/WhyChoose";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Faq } from "@/components/site/Faq";
+import { Staff } from "@/components/site/Staff";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { MobileCta } from "@/components/site/MobileCta";
@@ -35,6 +36,7 @@ function Index() {
         <WhyChoose />
         <Testimonials />
         <Faq />
+        <Staff />
         <Contact />
       </main>
       <Footer />
