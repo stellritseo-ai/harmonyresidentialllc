@@ -13,7 +13,7 @@ const services = [
     image: svcNursing,
     title: "Nursing Services",
     category: "Nursing",
-    desc: "Skilled in-home nursing — wound care, medication management, and post-hospital recovery by licensed RNs.",
+    desc: "Unskilled in-home nursing — wound care, medication management, and post-hospital recovery by licensed RNs.",
   },
   {
     icon: Activity,
@@ -100,11 +100,10 @@ export function Services() {
                   <button
                     key={c}
                     onClick={() => setActive(c)}
-                    className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all border ${
-                      isActive
-                        ? "bg-brand-gradient text-white border-transparent shadow-glow"
-                        : "glass text-foreground/75 border-white/40 hover:text-primary hover:border-primary/30"
-                    }`}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all border ${isActive
+                      ? "bg-brand-gradient text-white border-transparent shadow-glow"
+                      : "glass text-foreground/75 border-white/40 hover:text-primary hover:border-primary/30"
+                      }`}
                     aria-pressed={isActive}
                   >
                     {c === "All" && <LayoutGrid className="w-3.5 h-3.5" />}

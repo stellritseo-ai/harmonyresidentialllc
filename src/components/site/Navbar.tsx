@@ -40,12 +40,14 @@ export function Navbar() {
           className={`flex items-center justify-between rounded-2xl px-4 md:px-6 py-3 transition-all duration-500 ${scrolled ? "bg-white/70 backdrop-blur-xl border border-white/20 shadow-soft" : "bg-transparent border border-transparent"
             }`}
         >
-          <a href="#home" className="flex items-center gap-2.5 group">
-            <img src={logo} alt="Harmony Residential Care logo" className="h-[75px] md:h-[75px] w-auto object-contain" />
-            {/* <div className="leading-tight">
-              <div className="font-display font-bold text-[15px] md:text-base text-foreground">Harmony</div>
-              <div className="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Residential Care</div>
-            </div> */}
+          <a href="#home" className="flex items-center gap-2.5 group shrink-0">
+            <img
+              src={logo}
+              alt="Harmony Residential Care logo"
+              className={`w-auto object-contain transition-all duration-500 ${
+                scrolled ? "h-10 md:h-12" : "h-11 md:h-14"
+              }`}
+            />
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">

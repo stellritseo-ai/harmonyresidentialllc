@@ -36,7 +36,7 @@ function Index() {
         <WhyChoose />
         <Testimonials />
         <Faq />
-        <Staff />
+        {/* <Staff /> */}
         <Contact />
       </main>
       <Footer />

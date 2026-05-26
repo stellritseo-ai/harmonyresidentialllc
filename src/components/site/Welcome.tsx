@@ -40,7 +40,7 @@ export function Welcome() {
             one live safely, comfortably, and with dignity — right at home.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            With a dedicated team of registered nurses, therapists, and medical social workers, we treat every patient
+            With a dedicated team of unskilled nurses, therapists, and medical social workers, we treat every patient
             like family. Whether you need short-term rehabilitation or long-term support, we are here for you.
           </p>
 
