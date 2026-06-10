@@ -40,7 +40,14 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold mb-4">Services</h4>
             <ul className="space-y-2.5 text-sm text-white/80">
-              {["Companionship", "Home Maker Personal Care", "Shared Living", "DD Waiver Nursing", "Participate-Directed HPC", "Medication Administration"].map((s) => (
+              {[
+                "Pediatric Home Health Care",
+                "Personal Assistance (PAS)",
+                "Primary Home Care (PHC)",
+                "Extended Hour Nursing",
+                "Wound & Catheter Care",
+                "Daily Living Support"
+              ].map((s) => (
                 <li key={s}><a href="#services" className="hover:text-white transition story-link">{s}</a></li>
               ))}
             </ul>

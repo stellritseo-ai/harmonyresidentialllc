@@ -17,5 +17,5 @@ export default defineConfig({
       enabled: true,
     },
   },
-  cloudflare: !isVercel,
+  cloudflare: !isVercel ? {} : false,
 });

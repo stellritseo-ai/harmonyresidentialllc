@@ -12,12 +12,9 @@ const navLinks = [
 ];
 
 const services = [
-  { label: "Companionship", href: "#services" },
-  { label: "Home Maker Personal Care", href: "#services" },
-  { label: "Shared Living", href: "#services" },
-  { label: "DD Waiver Nursing", href: "#services" },
-  { label: "Participate-Directed HPC", href: "#services" },
-  { label: "Medication Administration", href: "#services" },
+  { label: "Pediatric Home Health Care", href: "#services" },
+  { label: "Personal Assistance Services", href: "#services" },
+  { label: "Primary Home Care (PHC)", href: "#services" },
 ];
 
 export function Navbar() {
