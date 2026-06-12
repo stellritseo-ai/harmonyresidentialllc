@@ -87,7 +87,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/75">
           <div>© 2026 Harmony Residential Care LLC. All rights reserved.</div>
-          <div>Design By <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition underline underline-offset-4">Lambton Labs</a></div>
+          <div>Design By <a href="stellrit.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition underline underline-offset-4">StellR IT LLC</a></div>
         </div>
       </div>
     </footer>
