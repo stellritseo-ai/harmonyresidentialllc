@@ -81,12 +81,9 @@ export function Contact() {
               <label className="block text-sm font-semibold text-foreground mb-2">Service Interested In</label>
               <select name="service" required className="w-full rounded-2xl bg-white/80 border border-border px-4 py-3.5 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition">
                 <option value="">Select a service</option>
-                <option>Companionship</option>
-                <option>Home Maker Personal Care</option>
-                <option>Shared Living</option>
-                <option>DD Waiver Nursing</option>
-                <option>Participate-Directed HPC</option>
-                <option>Medication Administration</option>
+                <option>Pediatric Care (Trach / Vent / G-Tube)</option>
+                <option>Personal Assistance (PAS / PHC)</option>
+                <option>Not sure yet — need a consultation</option>
               </select>
             </div>
             <div className="mt-4">
