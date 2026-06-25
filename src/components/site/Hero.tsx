@@ -46,7 +46,7 @@ export function Hero() {
               Licensed Texas Home Health Provider
             </div>
             <h1 className="mt-5 font-display text-[32px] md:text-[45px] leading-[42px] md:leading-[65px] font-bold text-foreground">
-              20 Years of <span className="text-brand-gradient">Trusted Home</span> Health Care in Round Rock
+              20 Years of <span className="text-brand-gradient">Trusted Home</span> Health Care in Texas
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
               Compassionate, professional care for seniors and individuals with disabilities. We bring premium companionship,
