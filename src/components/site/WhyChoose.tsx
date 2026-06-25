@@ -4,7 +4,7 @@ import { Counter } from "./Counter";
 import whyImg from "@/assets/why-choose.jpg";
 
 const points = [
-  { t: "20+ Years of Local Experience", d: "Two decades caring for Round Rock and Texas families." },
+  { t: "20+ Years of Local Experience", d: "Two decades caring for Texas families." },
   { t: "Licensed & Compassionate Team", d: "Vetted caregivers, RNs, and dedicated coordinators you can trust." },
   { t: "Personalized Care Plans", d: "Plans built around your goals, schedule, and individual needs." },
   { t: "No Long-Term Contracts", d: "Flexible, transparent service with no surprises." },
