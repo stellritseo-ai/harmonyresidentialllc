@@ -36,7 +36,7 @@ export function Welcome() {
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             For two decades, Harmony Residential Care LLC has been a beacon of compassionate in-home health care for
-            families in Round Rock and surrounding Texas communities. Our mission is simple: to help you or your loved
+            families in surrounding Texas communities. Our mission is simple: to help you or your loved
             one live safely, comfortably, and with dignity — right at home.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
