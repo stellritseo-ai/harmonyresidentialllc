@@ -43,23 +43,12 @@ function SectionWrapper({ children, linkTo, linkText }: { children: React.ReactN
 function Index() {
   return (
     <>
-      {/* <Hero />
-
+      <Hero />
       <Welcome />
-
-
       <Services />
-
-
-
       <WhyChoose />
-
-
-
       <Testimonials />
-
-
-      <Faq /> */}
+      <Faq />
       {/* <Staff /> */}
       <Contact />
     </>
