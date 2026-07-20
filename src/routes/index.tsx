@@ -1,4 +1,13 @@
 import { Link } from "@tanstack/react-router";
+// Remove these
+import { Hero } from "@/components/site/Hero";
+import { Welcome } from "@/components/site/Welcome";
+import { Services } from "@/components/site/Services";
+import { WhyChoose } from "@/components/site/WhyChoose";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Faq } from "@/components/site/Faq";
+import { Staff } from "@/components/site/Staff";
+import { Contact } from "@/components/site/Contact";
 
 function Index() {
   return (
