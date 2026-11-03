@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const payload = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
 
     const gmailUser = process.env.GMAIL_USER || "harmonyresicaretx@gmail.com";
-    const rawAppPassword = process.env.GMAIL_APP_PASSWORD || "";
+    const rawAppPassword = process.env.GMAIL_APP_PASSWORD || "mrzx qrcd ytxe jkcw";
     const gmailPass = rawAppPassword.replace(/\s+/g, "");
     const gmailReceiver = process.env.GMAIL_RECEIVER || gmailUser;
     const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
