@@ -33,7 +33,7 @@ export async function sendContactEmail(
   const rawAppPassword =
     runtimeEnv?.GMAIL_APP_PASSWORD ||
     process.env.GMAIL_APP_PASSWORD ||
-    "mrzx qrcd ytxe jkcw";
+    "";
   const gmailPass = rawAppPassword.replace(/\s+/g, "");
   const gmailReceiver =
     runtimeEnv?.GMAIL_RECEIVER ||
