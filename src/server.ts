@@ -1,6 +1,7 @@
 import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
+import { sendContactEmail, type ContactSubmissionPayload } from "./lib/email";
 import { renderErrorPage } from "./lib/error-page";
 
 type ServerEntry = {
@@ -68,6 +69,31 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/api/contact" && request.method === "POST") {
+      try {
+        const body = (await request.json()) as ContactSubmissionPayload;
+        const runtimeEnv =
+          env && typeof env === "object"
+            ? (env as Record<string, string | undefined>)
+            : undefined;
+        await sendContactEmail(body, runtimeEnv);
+        return new Response(JSON.stringify({ ok: true }), {
+          status: 200,
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      } catch (error) {
+        console.error("Failed to send contact email:", error);
+        const message =
+          error instanceof Error ? error.message : "Failed to send email";
+        return new Response(JSON.stringify({ ok: false, error: message }), {
+          status: 500,
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      }
+    }
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);

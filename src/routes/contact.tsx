@@ -44,6 +44,7 @@ function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Form state
   const [fullName, setFullName] = useState("");
@@ -63,45 +64,76 @@ function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(null);
+
+    if (careTypes.length === 0) {
+      setErrorMsg("Please select at least one Type of Care Needed.");
+      return;
+    }
+
     setLoading(true);
-    
+
+    const ageLabels: Record<string, string> = {
+      infant: "Infant (0-1 year)",
+      child: "Child (2-12 years)",
+      teen: "Teen (13-21 years)",
+      adult: "Adult (22-64 years)",
+      senior: "Senior (65+ years)",
+    };
+
+    const urgencyLabels: Record<string, string> = {
+      immediate: "Within 24 hours (Urgent)",
+      soon: "Within 1 week",
+      planning: "Planning ahead",
+      research: "Just researching",
+    };
+
     // Maps care types to display labels
-    const careLabels = careTypes.map((type) => {
-      if (type === "peds") return "Pediatric Home Health";
-      if (type === "pas") return "Personal Assistance Services (PAS)";
-      if (type === "phc") return "Primary Home Care (PHC)";
-      return "Not sure yet";
-    }).join(", ");
+    const careLabels = careTypes
+      .map((type) => {
+        if (type === "peds") return "Pediatric Home Health (Trach/Vent/G-Tube)";
+        if (type === "pas") return "Personal Assistance Services (PAS)";
+        if (type === "phc") return "Primary Home Care (PHC)";
+        return "Not sure yet — need a consultation";
+      })
+      .join(", ");
 
     const data = {
+      source: "Contact Page Inquiry Form",
       name: fullName,
       phone: phone,
       email: email,
-      ageCategory: age,
+      ageCategory: ageLabels[age] || age,
       careNeeded: careLabels,
-      urgency: urgency,
+      urgency: urgencyLabels[urgency] || urgency,
       message: message,
       preferredContact: contactMethod,
     };
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/harmonyresicaretx@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          Accept: "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
 
-      if (response.ok) {
+      const result = await response.json().catch(() => null);
+      if (response.ok && result?.ok !== false) {
         setFormSubmitted(true);
       } else {
-        alert("There was an error sending your request. Please try again or call us directly.");
+        setErrorMsg(
+          result?.error ||
+            "There was an error sending your request. Please try again or call us directly at (830) 743-7043.",
+        );
       }
     } catch (error) {
       console.error("Error submitting contact page form:", error);
-      alert("There was an error sending your request. Please try again or call us directly.");
+      setErrorMsg(
+        "There was an error sending your request. Please try again or call us directly at (830) 743-7043.",
+      );
     } finally {
       setLoading(false);
     }
@@ -371,6 +403,11 @@ function ContactPage() {
 
                   {/* Submit button */}
                   <div className="space-y-4 pt-2">
+                    {errorMsg && (
+                      <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-xs font-medium text-red-700">
+                        {errorMsg}
+                      </div>
+                    )}
                     <button
                       type="submit"
                       disabled={loading}

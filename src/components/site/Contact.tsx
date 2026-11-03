@@ -5,6 +5,7 @@ import { Reveal } from "./Reveal";
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   return (
     <section id="contact" className="relative py-[50px] overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50/40 to-white" />
@@ -34,36 +35,45 @@ export function Contact() {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
+              const form = e.currentTarget;
               setLoading(true);
-              const formData = new FormData(e.currentTarget);
+              setErrorMsg(null);
+              const formData = new FormData(form);
               const data = {
-                name: formData.get("name"),
-                phone: formData.get("phone"),
-                email: formData.get("email"),
-                service: formData.get("service"),
-                message: formData.get("message"),
+                source: "Home Page Consultation Form",
+                name: String(formData.get("name") || ""),
+                phone: String(formData.get("phone") || ""),
+                email: String(formData.get("email") || ""),
+                service: String(formData.get("service") || ""),
+                message: String(formData.get("message") || ""),
               };
-              
+
               try {
-                const response = await fetch("https://formsubmit.co/ajax/harmonyresicaretx@gmail.com", {
+                const response = await fetch("/api/contact", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    Accept: "application/json",
                   },
-                  body: JSON.stringify(data)
+                  body: JSON.stringify(data),
                 });
-                
-                if (response.ok) {
+
+                const result = await response.json().catch(() => null);
+                if (response.ok && result?.ok !== false) {
                   setSent(true);
-                  e.currentTarget.reset();
-                  setTimeout(() => setSent(false), 5000);
+                  form.reset();
+                  setTimeout(() => setSent(false), 6000);
                 } else {
-                  alert("There was an error sending your message. Please try again or call us directly.");
+                  setErrorMsg(
+                    result?.error ||
+                      "There was an error sending your message. Please try again or call us directly at (830) 743-7043.",
+                  );
                 }
               } catch (error) {
                 console.error("Error submitting form:", error);
-                alert("There was an error sending your message. Please try again or call us directly.");
+                setErrorMsg(
+                  "There was an error sending your message. Please try again or call us directly at (830) 743-7043.",
+                );
               } finally {
                 setLoading(false);
               }
@@ -90,6 +100,16 @@ export function Contact() {
               <label className="block text-sm font-semibold text-foreground mb-2">Brief Message</label>
               <textarea name="message" rows={4} required placeholder="Tell us a little about your needs…" className="w-full rounded-2xl bg-white/80 border border-border px-4 py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition resize-none" />
             </div>
+            {errorMsg && (
+              <div className="mt-4 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-xs font-medium text-red-700">
+                {errorMsg}
+              </div>
+            )}
+            {sent && (
+              <div className="mt-4 rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-xs font-medium text-emerald-800">
+                Thank you! Your message has been delivered to our care coordination team.
+              </div>
+            )}
             <button
               type="submit"
               disabled={loading}
